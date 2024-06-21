@@ -1,0 +1,62 @@
+<div class="container">
+    <app-input (importEvent)="handleImportSuccess()" ></app-input>
+    <div class="row col-sm-12 justify-content-between mt-5 mb-3">
+        <div class="col-sm-4">
+            <input type="search" class="form-control" placeholder="Search" [(ngModel)]="search" (ngModelChange)="onSearchChange()"/>
+        </div>
+        <div class="col-sm-8 col-md-5 d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" (click)="goForm()">Add + </button>
+            <button type="button" class="btn btn-primary mx-3" (click)="handleImport()">
+                Import <i class="bi bi-box-arrow-in-left"></i>
+            </button>
+            <button type="button" class="btn btn-primary" (click)="export()">
+                Export <i class="bi bi-box-arrow-in-right"></i>
+            </button>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th class="bg-primary text-light py-3">ID</th>
+                <th class="bg-primary text-light py-3">Name</th>
+                <th class="bg-primary text-light py-3">NRC</th>
+                <th class="bg-primary text-light py-3">DateOfBirth</th>
+                <th class="bg-primary text-light py-3">Phone</th>
+                <th class="bg-primary text-light py-3">Address</th>
+                <th class="bg-primary text-light py-3">Action</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="loading">
+            <tr class="text-center">
+                Loading...
+            </tr>
+        </tbody>
+        <tbody *ngIf="!loading">
+            <tr *ngFor="let student of getSlicedStudents()" class="t-row align-middle">
+                <th (click)="goUpdate(student.id)">{{student.studentID}}</th>
+                <td (click)="goUpdate(student.id)">{{student.name}}</td>
+                <td (click)="goUpdate(student.id)">{{student.nrc}}</td>
+                <td (click)="goUpdate(student.id)">{{student.dob}}</td>
+                <td (click)="goUpdate(student.id)">{{student.phonenumber}}</td>
+                <td (click)="goUpdate(student.id)">{{student.address}}</td>
+                <td class="d-flex justify-content-evenly">
+                    <button type="button" class="btn btn-primary" (click)="goUpdate(student.id)">
+                        <i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" (click)="goDelete(student.id,student.studentID)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                    <button type="button" class="btn btn-primary" (click)="exportById(student.id)">
+                        <i class="bi bi-box-arrow-in-right"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <app-modal [deleteId]="deleteId" [message]="message" (modalEvent)="handleModalDelete()"></app-modal>
+    <div class="row justify-content-end my-5">
+        <div class="col-md-6 d-flex justify-content-end">
+            <app-pagination [totalItems]="totalItems" [itemsPerPage]="itemsPerPage" (onPageChange)="onPageChanged($event)"></app-pagination>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+.number_input input[type=number]::-webkit-inner-spin-button, 
+.number_input input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.number_input input[type=number] {text-align: right;}

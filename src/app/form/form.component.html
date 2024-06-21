@@ -1,0 +1,198 @@
+<div class="container">
+    <div class="row col-md-12 d-flex justify-content-between mt-5 mb-5">
+        <div class="col sm-2">
+            <button type="button" class="btn btn-light" (click)="goBack()">
+                <i class="bi bi-arrow-return-left"></i>
+            </button>
+        </div>
+        <div class="col sm-8 text-center">
+            <h3>Student Entry Form</h3>
+        </div>
+        <div class="col sm-2"></div>
+    </div>
+        
+        <div class="row col-sm-12 justify-content-evenly mb-3">
+            <div class="col-md-4">
+                <label for="id" class="form-label">Studet ID</label>
+                <input type="text" class="form-control" id="id" placeholder="Enter ID" [(ngModel)]="student.studentID">
+            </div>
+            <div class="col-md-4">
+                <label for="dob" class="form-label">DateOfBirth</label>
+                <input type="date" class="form-control" id="dob" [(ngModel)]="student.dob">
+            </div>
+        </div>
+
+        <div class="row col-sm-12 d-flex justify-content-evenly mb-3">
+            <div class="col-md-4">
+                <label for="name" class="form-label">Student Name</label>
+                <input type="text" class="form-control" id="id" placeholder="Enter Name" [(ngModel)]="student.name">
+            </div>
+            <div class="col-md-4">
+                <label for="gender" class="form-label">Choose Gender</label>
+                <div id="gender" class="w-100 d-flex justify-content-evenly">
+                    <div class="form-check my-2">
+                    <label class="form-check-label" for="male">
+                        Male
+                    </label>
+                    <input class="form-check-input" type="radio" name="gender" id="male" value="MALE" [(ngModel)]="student.gender" checked>
+                    </div>
+                    <div class="form-check my-2">
+                    <label class="form-check-label" for="female">
+                        Female
+                    </label>
+                    <input class="form-check-input" type="radio" name="gender" id="female" value="FEMALE" [(ngModel)]="student.gender">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 d-flex justify-content-evenly mb-3">
+            <div class="col-md-4">
+                <label for="nrc" class="form-label">NRC</label>
+                <input type="text" class="form-control" id="nrc" placeholder="Enter NRC" [(ngModel)]="student.nrc">
+            </div>
+            <div class="col-md-4">
+                <label for="state" class="form-label">State/Division</label>
+                <select class="form-select" id="state" [(ngModel)]="student.state">
+                    <option value="MAGWAY">MAGWAY</option>
+                    <option value="CHIN">CHIN</option>
+                    <option value="KACHIN">KACHIN</option>
+                    <option value="SAGAING">SAGAING</option>
+                    <option value="TANINTHARYI">TANINTHARYI</option>
+                    <option value="MANDALAY">MANDALAY</option>
+                    <option value="RAKHINE">RAKHINE</option>
+                    <option value="KAYAH">KAYAH</option>
+                    <option value="SHAN">SHAN</option>
+                    <option value="MON">MON</option>
+                    <option value="AYEYARWADDY">AYEYARWADDY</option>
+                    <option value="KAYIN">KAYIN</option>
+                    <option value="YANGON">YANGON</option>
+                    <option value="NAYPYIDAW">NAYPYIDAW</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row col-sm-12 d-flex justify-content-evenly mb-3">
+            <div class="col-md-4">
+                <label for="mail" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="mail" placeholder="Enter Mail" [(ngModel)]="student.email">
+            </div>
+            <div class="col-md-4">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" placeholder="Enter Phone Number" [(ngModel)]="student.phonenumber">
+            </div>
+        </div>
+
+        <div class="row col-sm-12 d-flex justify-content-evenly mb-5">
+            <div class="col-md-4">
+                <label for="Address" class="form-label">Address</label>
+                <textarea rows="3" type="text" class="form-control" id="address" placeholder="Enter Address" [(ngModel)]="student.address"></textarea>
+            </div>
+            <div class="col-md-4">
+                <label for="hobby" class="form-label">Hobby</label>
+                <div class="d-flex justify-content-evenly flex-wrap">
+                    <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="Football" id="football" (click)="onCheck('Football')" [checked]="student.hobby.includes('Football')">
+                    <label class="form-check-label" for="football">
+                        Football
+                    </label>
+                    </div>
+
+                    <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="Reading" id="reading" (click)="onCheck('Reading')" [checked]="student.hobby.includes('Reading')">
+                    <label class="form-check-label" for="reading">
+                        Reading
+                    </label>
+                    </div>
+
+                    <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="VideoGame" id="game" (click)="onCheck('VideoGame')" [checked]="student.hobby.includes('VideoGame')">
+                    <label class="form-check-label" for="game">
+                        Video game
+                    </label>
+                    </div>
+
+                    <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="Painting" id="painting" (click)="onCheck('Painting')" [checked]="student.hobby.includes('Painting')">
+                    <label class="form-check-label" for="painting">
+                        Painting
+                    </label>
+                    </div>
+
+                    <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="Fishing" id="fishing" (click)="onCheck('Fishing')" [checked]="student.hobby.includes('Fishing')">
+                    <label class="form-check-label" for="fishing">
+                        Fishing
+                    </label>
+                    </div>
+
+                    <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="Baking" id="baking" (click)="onCheck('Baking')" [checked]="student.hobby.includes('Baking')">
+                    <label class="form-check-label" for="baking">
+                        Baking
+                    </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-5 mb-3">
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary" (click)="onAdd()">
+                    Add +
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-evenly bg-primary py-3 text-light">
+            <div class="col text-center">Year</div>
+            <div class="col text-center">Myanmar</div>
+            <div class="col text-center">English</div>
+            <div class="col text-center">Mathematic</div>
+            <div class="col text-center">Historyy</div>
+            <div class="col text-center">Science</div>
+            <div class="col text-center">Total</div>
+            <div class="col text-center">Delete</div>
+        </div>
+
+        <div *ngFor="let report of student.reports; let i = index;" class="row justify-content-evenly py-3 border bg-light">
+            <div class="col justify-content-center number_input">
+                <input type="number" name="year-{{i}}" class="form-control" placeholder="0000" [(ngModel)]="student.reports[i].academicYear">
+            </div>
+            <div class="col justify-content-center number_input">
+                <input type="number" name="myanmar-{{i}}" class="form-control" placeholder="0" [(ngModel)]="student.reports[i].myanmar" (ngModelChange)="calculateTotal(i)">
+            </div>
+            <div class="col justify-content-center number_input">
+                <input type="number" name="english-{{i}}" class="form-control" placeholder="0" [(ngModel)]="student.reports[i].english" (ngModelChange)="calculateTotal(i)">
+            </div>
+            <div class="col justify-content-center number_input">
+                <input type="number" name="mathematic-{{i}}" class="form-control" placeholder="0" [(ngModel)]="student.reports[i].mathematic" (ngModelChange)="calculateTotal(i)">
+            </div>
+            <div class="col justify-content-center number_input">
+                <input type="number" name="history-{{i}}" class="form-control" placeholder="0" [(ngModel)]="student.reports[i].history" (ngModelChange)="calculateTotal(i)">
+            </div>
+            <div class="col justify-content-center number_input">
+                <input type="number" name="science-{{i}}" class="form-control" placeholder="0" [(ngModel)]="student.reports[i].science" (ngModelChange)="calculateTotal(i)">
+            </div>
+            <div class="col justify-content-center number_input">
+                <input type="number" name="total-{{i}}" class="form-control" placeholder="0" [(ngModel)]="student.reports[i].total" readonly>
+            </div>
+            <div class="col justify-content-center">
+                <button type="button" class="btn btn-danger" (click)="onRemove(i)">
+                    delete
+                </button>
+            </div>
+        </div>
+
+        <div class="row justify-content-end my-5">
+            <div class="col-sm-2 d-flex justify-content-end">
+                <button *ngIf="!student.id" type="submit" class="btn btn-primary" (click)="goSave()">
+                    save
+                </button>
+                <button *ngIf="student.id" type="submit" class="btn btn-primary" (click)="goUpdate()">
+                    update
+                </button>
+            </div>
+        </div>
+        
+</div>
