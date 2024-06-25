@@ -9,8 +9,11 @@
             <button type="button" class="btn btn-primary mx-3" (click)="handleImport()">
                 Import <i class="bi bi-box-arrow-in-left"></i>
             </button>
-            <button type="button" class="btn btn-primary" (click)="export()">
+            <button type="button" class="btn btn-primary me-3" (click)="export()">
                 Export <i class="bi bi-box-arrow-in-right"></i>
+            </button>
+            <button type="button" class="btn btn-primary" (click)="downloadPdf()">
+                PDF <i class="bi bi-box-arrow-in-right"></i>
             </button>
         </div>
     </div>
@@ -27,8 +30,13 @@
             </tr>
         </thead>
         <tbody *ngIf="loading">
-            <tr class="text-center">
-                Loading...
+            <tr>
+                <td class="text-center" colspan="7">Loading...</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="fetchFailed">
+            <tr>
+                <td class="text-center text-danger" colspan="7">Failed to fetch data.</td>
             </tr>
         </tbody>
         <tbody *ngIf="!loading">

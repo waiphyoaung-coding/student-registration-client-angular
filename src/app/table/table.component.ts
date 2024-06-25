@@ -3,6 +3,7 @@ import { RestService } from '../rest.service';
 import { Student } from '../models/student';
 import { Router } from '@angular/router';
 import * as bootstrap from 'bootstrap';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-table',
@@ -14,6 +15,7 @@ export class TableComponent implements OnInit {
   studentList:Student[] = [];
   students:Student[] = [];
   loading:boolean = true;
+  fetchFailed:boolean = false;
   delete:boolean = false;
 
   search:string = '';
@@ -37,6 +39,10 @@ export class TableComponent implements OnInit {
         this.loading = false;
         this.totalItems = data.length;
       }
+    },
+    (error : HttpErrorResponse)=>{
+      this.loading = false;
+      this.fetchFailed=true;
     })
   }
 
@@ -118,6 +124,18 @@ export class TableComponent implements OnInit {
       if(data){
         this.download(data)
       }
+    })
+  }
+
+  downloadPdf(){
+    this.rest.getPdf('/pdf').subscribe(response => {
+      const blob = new Blob([response], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'students.pdf';
+      a.click();
+      window.URL.revokeObjectURL(url)
     })
   }
 

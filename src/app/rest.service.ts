@@ -44,4 +44,18 @@ export class RestService {
   import(url:any,formData:FormData):Observable<HttpResponse<any>>{
     return this.http.post<any>(`${environment.apiurl}${url}`,formData)
   }
+
+  uploadImage(url:any,FormData:FormData):Observable<any>{
+    return this.http.post(`Http://localhost:8080/api/image${url}`,FormData)
+  }
+
+  getImage(url:any):Observable<any>{
+    return this.http.get(`Http://localhost:8080/api/image${url}`)
+  }
+
+  getPdf(url:any):Observable<any>{
+    return this.http.get(`${environment.apiurl}${url}`,{
+      responseType: 'blob'
+    })
+  }
 }

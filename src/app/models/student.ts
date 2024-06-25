@@ -19,6 +19,7 @@ export interface Student {
     gender: string;
     state: string;
     phonenumber: number|string;
+    imageName:string;
     hobby: string[];
     reports: Report[];
   }
